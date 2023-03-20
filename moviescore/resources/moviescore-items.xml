@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+-->
+<items xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items.xsd">
+    <enumtypes>
+            <enumtype code="MovieType" autocreate="true" generate="true" dynamic="true">
+            </enumtype>
+
+            <enumtype code="TicketType" autocreate="true" generate="true" dynamic="false">
+                <value code="cinema" />
+                <value code="theater" />
+            </enumtype>
+    </enumtypes>
+
+
+    <relations>
+<!--        <relation code="Product2RockBand" autocreate="true" generate="false" localized="false">-->
+<!--            <sourceElement qualifier="tours" type="Product" collectiontype="set" cardinality="many" ordered="false">-->
+<!--                <modifiers read="true" write="true" search="true" optional="true" />-->
+<!--            </sourceElement>-->
+<!--            <targetElement qualifier="band" type="Band" cardinality="one">-->
+<!--                <modifiers read="true" write="true" search="true" optional="true" />-->
+<!--            </targetElement>-->
+<!--        </relation>-->
+<!--        <relation code="Band2MusicType" autocreate="true" generate="false" localized="false">-->
+<!--            <deployment table="Band2MusicType" typecode="30269" />-->
+<!--            <sourceElement qualifier="bands" type="Band" collectiontype="set" cardinality="many" ordered="false">-->
+<!--                <modifiers read="true" write="true" search="true" optional="true" />-->
+<!--            </sourceElement>-->
+<!--            <targetElement qualifier="types" type="MusicType" cardinality="many">-->
+<!--                <modifiers read="true" write="true" search="true" optional="true" />-->
+<!--            </targetElement>-->
+<!--        </relation>-->
+        <relation code="Product2Movie" autocreate="true" generate="false" localized="false">
+            <sourceElement qualifier="tickets" type="Product" collectiontype="set" cardinality="many" ordered="false">
+                <modifiers read="true" write="true" search="true" optional="true"/>
+            </sourceElement>
+            <targetElement qualifier="movie" type="Movie" cardinality="one">
+                <modifiers read="true" write="true" search="true" optional="true"/>
+            </targetElement>
+        </relation>
+        <relation code="Movie2GenreType" autocreate="true" generate="false" localized="false">
+            <deployment table="Movie2GenreType" typecode="31367"/>
+            <sourceElement qualifier="movies" type="Movie" collectiontype="set" cardinality="many" ordered="false">
+                <modifiers read="true" write="true" search="true" optional="true"/>
+            </sourceElement>
+            <targetElement qualifier="types" type="MovieType" cardinality="many">
+                <modifiers read="true" write="true" search="true" optional="true"/>
+            </targetElement>
+        </relation>
+    </relations>
+
+
+    <itemtypes>
+        <!-- Add your item definitions here -->
+        <itemtype generate="true" code="Product" autocreate="false">
+            <attributes>
+                <attribute qualifier="hashtag" type="java.lang.String">
+                    <description>hashtag of concert tour for social media</description>
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype generate="true" code="Movie" autocreate="true">
+            <deployment table="Movies" typecode="31368" />
+            <attributes>
+                <attribute qualifier="code" type="java.lang.String">
+                    <description>short unique code</description>
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="name" type="localized:java.lang.String">
+                    <description>Title of movie</description>
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="synopsis" type="localized:java.lang.String">
+                    <description>Description of the movie</description>
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="releaseYear" type="java.util.Date">
+                    <description>The year that movie released</description>
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="image" type="MediaContainer">
+                    <description>picture of band in different formats</description>
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype generate="true" code="Ticket" extends="VariantProduct" autocreate="true">
+            <attributes>
+                <attribute qualifier="venue" type="localized:java.lang.String">
+                    <description>Venue of ticket</description>
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="date" type="java.util.Date">
+                    <description>Date of movie</description>
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="ticketType" type="TicketType">
+                    <description>Type of movie exhibitor</description>
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+        </itemtype>
+    </itemtypes>
+</items>

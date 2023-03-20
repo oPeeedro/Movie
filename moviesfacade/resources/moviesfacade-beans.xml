@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+-->
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="beans.xsd">
+
+	<bean class="de.hybris.platform.commercefacades.product.data.ProductData">
+		<property name="genders" type="java.util.List&lt;moviesfacade.product.data.GenderData>"/>
+	</bean>
+
+	<bean class="moviesfacade.product.data.GenderData">
+		<property name="code" type="String"/>
+		<property name="name" type="String"/>
+	</bean>
+
+	<bean class = "moviesfacade.data.ExhibitionSummaryData">
+		<description >Data object for an exhibition summary which has no equivalent on the type system</description>
+		<property name = "id" type = "String" />
+		<property name = "name" type = "String" />
+		<property name = "numberOfTickets" type = "String" />
+	</bean>
+	<bean class = "moviesfacade.data.MovieData" >
+		<description>Data object representing a movie</description>
+		<property name = "code" type = "String" />
+		<property name = "name" type = "String" />
+		<property name = "synopsis" type = "String" />
+		<property name = "releaseYear" type = "java.util.Date"/>
+		<property name=  "age" type="java.lang.Integer"/>
+		<property name = "types" type="java.util.List&lt;String&gt;"/>
+		<property name = "place" type="java.util.List&lt;moviesfacade.data.ExhibitionSummaryData&gt;"/>
+		<property name = "ImageURL" type = "String" />
+	</bean>
+	<bean class = "moviesfacade.data.TicketSummaryData">
+		<description >Data object for a ticket summary</description>
+		<property name = "quantity" type = "Integer" />
+		<property name = "date" type = "java.util.Date" />
+		<property name = "venue" type = "String" />
+		<property name = "type" type = "String" />
+	</bean>
+	<bean class = "moviesfacade.data.PlaceData">
+		<description>Data object representing a theater/cinema</description>
+		<property name = "id" type = "String" />
+		<property name = "placeName" type = "String" />
+		<property name = "description" type = "String" />
+		<property name = "tickets" type="java.util.List&lt;moviesfacade.data.TicketSummaryData&gt;"/>
+	</bean>
+</beans>

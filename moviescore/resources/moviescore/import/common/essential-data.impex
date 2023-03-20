@@ -1,0 +1,125 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+# Import essential data for the Accelerator
+#
+# Includes:
+# * Languages
+# * Currencies
+# * Titles
+# * Vendors
+# * Warehouses
+# * Supported Credit/Debit cards
+# * User Groups
+# * DistanceUnits for Storelocator
+# * MediaFolders
+# * MediaFormats                               s
+# * Tax & Tax Groups
+# * Jobs
+#% impex.setLocale(Locale.GERMAN);
+
+# Languages
+INSERT_UPDATE Language;isocode[unique=true];fallbackLanguages(isocode);active[default=true]
+;en;;;
+;de;en;;
+;ja;en;;
+;zh;en;;
+
+# Currencies
+INSERT_UPDATE Currency;isocode[unique=true];conversion;digits;symbol
+;GBP;1;2;£
+;EUR;1;2;€
+;USD;1,4;2;$
+;JPY;120;0;¥
+
+# Vendor
+INSERT_UPDATE Vendor;code[unique=true];name
+;default;Default Vendor
+
+# Disable preview for email pages
+UPDATE CMSPageType;code[unique=true];previewDisabled
+;EmailPage;true
+
+# Titles
+INSERT_UPDATE Title;code[unique=true]
+;mr
+;mrs
+;miss
+;ms
+;dr
+;rev
+
+# Media Folders
+INSERT_UPDATE MediaFolder;qualifier[unique=true];path[unique=true]
+;images;images
+;email-body;email-body
+;email-attachments;email-attachments
+
+# Media formats
+INSERT_UPDATE MediaFormat;qualifier[unique=true]
+;1200Wx1200H
+;515Wx515H
+;365Wx246H
+;300Wx300H
+;96Wx96H
+;65Wx65H
+;30Wx30H
+;mobile
+;tablet
+;desktop
+;widescreen
+
+# Tax & Tax Groups
+INSERT_UPDATE UserTaxGroup;code[unique=true]
+;de-taxes
+;jp-taxes
+;uk-taxes
+;us-taxes
+;ca-taxes
+
+INSERT_UPDATE ProductTaxGroup;code[unique=true]
+;jp-vat-full
+;eu-vat-full
+;eu-vat-half
+;us-sales-tax-full
+;ca-sales-tax-full
+
+INSERT_UPDATE Tax;code[unique=true];value;currency(isocode)
+;de-vat-full;19
+;de-vat-half;7
+;jp-vat-full;5
+;uk-vat-full;20
+;uk-vat-half;5
+;us-sales-tax-full;0
+;ca-sales-tax-full;0
+
+INSERT_UPDATE ServicelayerJob;code[unique=true];springId[unique=true]
+;cartRemovalJob;cartRemovalJob
+;siteMapMediaJob;siteMapMediaJob
+;quoteToExpireSoonJobPerformable;quoteToExpireSoonJobPerformable
+;quoteExpiredJobPerformable;quoteExpiredJobPerformable
+
+# Deactivate Frontend Restriction on category by default for perfomance purposes
+UPDATE SearchRestriction;code[unique=true];active[default=false]
+;Frontend_RestrictedCategory
+
+
+INSERT_UPDATE Movie; code[unique = true]; name[lang = en]          ; synopsis[lang = en]                    ; synopsis[lang = pt]                      ; releaseYear[dateformat = dd.MM.yyyy HH:mm]; types(code)
+                   ; ANG                ; Avengers                 ; Earth mighty super-heroes              ; Homem de ferro e seus amigos             ; 16.01.1998 10:00                          ; ACTION    ;
+                   ; BLD                ; Blade                    ; A vampire man fights other vanpire man ; Luta contra os vampiros                  ; 01.02.2002 10:00                          ; ACTION    ;
+                   ; 007SKY             ; 007 Skyfall              ; 007 fighting your own demons           ; Ele gosta de martini                     ; 01.02.2012 10:00                          ; ACTION    ;
+                   ; HIT                ; HITCH                    ; Hitch helps you to find love           ; ELe da conselhos amorosos                ; 01.02.2003 10:00                          ; ROMCOM    ;
+                   ; TIN                ; The Adventures of Tintin ; Everybody wants the treasure           ; Tesouros e areia                         ; 01.02.2011 10:00                          ; ADVENTURE ;
+                   ; HP1                ; Harry Potter             ; Hogwarts                               ; Leviosa                                  ; 01.02.2001 10:00                          ; ADVENTURE ;
+                   ; CRD                ; Creed                    ; Boxers and drama                       ; Trocação de soco                         ; 01.02.2015 10:00                          ; DRAMA     ;
+                   ; LMR                ; Lost in Mars             ; He got lost in mars!                   ; Ele ficou preso em marte                 ; 01.02.2015 10:00                          ; DRAMA     ;
+                   ; BTF                ; Back to the Future       ; Time-travel                            ; Ele vai conhecer seus pais no passado    ; 01.02.1985 10:00                          ; ADVENTURE ;
+                   ; MDT                ; Modern Times             ; Worker making jokes                    ; Chaplin fazendo mais um personagem igual ; 01.02.1936                                ; COMEDY    ;
+
+
+INSERT_UPDATE MovieType; code[unique = true]
+                       ; DRAMA
+                       ; THRILLER
+                       ; ACTION
+                       ; COMEDY
+                       ; ROMCOM
