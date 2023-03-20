@@ -39,7 +39,7 @@ public class DefaultMoviePopulator implements Populator<MovieModel, MovieData> {
         target.setReleaseYear(source.getReleaseYear());
 
 
-        target.setTypes(Collections.singletonList(String.valueOf(source.getTypes())));
+        target.setTypes(getGenres(source));
         target.setImageURL(getImageURL(source, format));
     }
 
