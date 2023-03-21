@@ -15,23 +15,6 @@
 
 
     <relations>
-<!--        <relation code="Product2RockBand" autocreate="true" generate="false" localized="false">-->
-<!--            <sourceElement qualifier="tours" type="Product" collectiontype="set" cardinality="many" ordered="false">-->
-<!--                <modifiers read="true" write="true" search="true" optional="true" />-->
-<!--            </sourceElement>-->
-<!--            <targetElement qualifier="band" type="Band" cardinality="one">-->
-<!--                <modifiers read="true" write="true" search="true" optional="true" />-->
-<!--            </targetElement>-->
-<!--        </relation>-->
-<!--        <relation code="Band2MusicType" autocreate="true" generate="false" localized="false">-->
-<!--            <deployment table="Band2MusicType" typecode="30269" />-->
-<!--            <sourceElement qualifier="bands" type="Band" collectiontype="set" cardinality="many" ordered="false">-->
-<!--                <modifiers read="true" write="true" search="true" optional="true" />-->
-<!--            </sourceElement>-->
-<!--            <targetElement qualifier="types" type="MusicType" cardinality="many">-->
-<!--                <modifiers read="true" write="true" search="true" optional="true" />-->
-<!--            </targetElement>-->
-<!--        </relation>-->
         <relation code="Product2Movie" autocreate="true" generate="false" localized="false">
             <sourceElement qualifier="tickets" type="Product" collectiontype="set" cardinality="many" ordered="false">
                 <modifiers read="true" write="true" search="true" optional="true"/>

@@ -1,1 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?><testclasses><moviesfacade><testclass>moviesfacade.suggestion.impl.DefaultSimpleSuggestionFacadeTest</testclass><testclass>moviesfacade.suggestion.DefaultSimpleSuggestionFacadeIntegrationTest</testclass></moviesfacade></testclasses>
+<?xml version="1.0" encoding="utf-8"?><testclasses><moviesfacade></moviesfacade></testclasses>

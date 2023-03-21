@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="HybrisProjectSettings">
+    <option name="completeSetOfAvailableExtensionsInHybris">
+      <set>
+        <option value="moviescore" />
+        <option value="moviesfacade" />
+        <option value="moviesstorefront" />
+      </set>
+    </option>
+    <option name="followSymlink" value="true" />
+    <option name="hybrisDirectory" value="" />
+    <option name="hybrisProject" value="true" />
+    <option name="ideModulesFilesDirectory" value="$PROJECT_DIR$/idea-module-files" />
+    <option name="importOotbModulesInReadOnlyMode" value="true" />
+    <option name="importedByVersion" value="2022.3.1" />
+    <option name="javadocUrl" value="" />
+    <option name="moduleSettings">
+      <map>
+        <entry key="moviescore">
+          <value>
+            <ModuleSettings>
+              <option name="descriptorType" value="CUSTOM" />
+            </ModuleSettings>
+          </value>
+        </entry>
+        <entry key="moviesfacade">
+          <value>
+            <ModuleSettings>
+              <option name="descriptorType" value="CUSTOM" />
+            </ModuleSettings>
+          </value>
+        </entry>
+        <entry key="moviesstorefront">
+          <value>
+            <ModuleSettings>
+              <option name="descriptorType" value="CUSTOM" />
+            </ModuleSettings>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
