@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 21 de mar. de 2023 14:19:33                 ---
+ * --- Generated at 22 de mar. de 2023 10:00:40                 ---
  * ----------------------------------------------------------------
  */
 package moviescore.constants;
@@ -16,6 +16,7 @@ public class GeneratedMoviescoreConstants
 	public static final String EXTENSIONNAME = "moviescore";
 	public static class TC
 	{
+		public static final String API = "API".intern();
 		public static final String MOVIE = "Movie".intern();
 		public static final String MOVIETYPE = "MovieType".intern();
 		public static final String TICKET = "Ticket".intern();

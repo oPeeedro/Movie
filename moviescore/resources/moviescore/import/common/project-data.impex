@@ -9,6 +9,8 @@ $supercategories = supercategories(code, $catalogVersion)
 $baseProduct = baseProduct(code, $catalogVersion)
 $approved = approvalstatus(code)[default='approved']
 $catalogVersion = catalogversion(catalog(id[default=$productCatalog]), version[default='Online'])[unique=true, default=$productCatalog:Online]
+$medias=medias(code, $catalogVersion)
+$siteResource=jar:.constants.MoviescoreConstants&/moviescore/movieimages
 
 # Product catalog
 INSERT_UPDATE Catalog; id[unique = true]

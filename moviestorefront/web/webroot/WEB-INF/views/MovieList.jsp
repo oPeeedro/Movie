@@ -6,7 +6,7 @@
         <h1>Movie List</h1>
      <ul>
      <c:forEach var="movie" items="${movies}">
-        <li><a href="./movies/${movie.name}">${movie.name}</a></li>
+        <li><a href="./movies/${movie.name}"<img src="${movie.imageURL}"/>${movie.name}</a></li>
       </c:forEach>
       </ul>
     </body>

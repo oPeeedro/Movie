@@ -8,9 +8,11 @@ import de.hybris.platform.servicelayer.config.ConfigurationService;
 import de.hybris.platform.servicelayer.dto.converter.ConversionException;
 import de.hybris.platform.servicelayer.media.MediaService;
 import moviescore.enums.MovieType;
+import moviescore.handler.MovieAgeAttributeHandler;
 import moviescore.model.MovieModel;
 import moviesfacade.data.ExhibitionSummaryData;
 import moviesfacade.data.MovieData;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,21 +28,24 @@ public class DefaultMoviePopulator implements Populator<MovieModel, MovieData> {
 
     private ConfigurationService configService;
     private MediaService mediaService;
+    @Autowired
+    private MovieAgeAttributeHandler movieAgeAttributeHandler;
 
     @Override
     public void populate(MovieModel source, MovieData target) throws ConversionException {
 
-        //final String mediaFormatName = configService.getConfiguration().getString(BAND_LIST_FORMAT);
-        //final MediaFormatModel format = mediaService.getFormat(mediaFormatName);
+        final String mediaFormatName = configService.getConfiguration().getString(BAND_LIST_FORMAT);
+        final MediaFormatModel format = mediaService.getFormat(mediaFormatName);
 
         target.setCode(source.getCode());
         target.setName(source.getName());
         target.setSynopsis(source.getSynopsis(Locale.ENGLISH));
         target.setReleaseYear(source.getReleaseYear());
 
+        target.setAge(movieAgeAttributeHandler.get(source));
 
         target.setTypes(getGenres(source));
-        //target.setImageURL(getImageURL(source, format));
+        target.setImageURL(getImageURL(source, format));
     }
 
     protected String getImageURL(final MovieModel sm, final MediaFormatModel format) {

@@ -51,7 +51,8 @@
             <attributes>
                 <attribute qualifier="code" type="java.lang.String">
                     <description>short unique code</description>
-                    <persistence type="property" />
+                    <persistence type="property"  />
+                    <modifiers optional="false" unique="true" initial="true"/>
                 </attribute>
                 <attribute qualifier="name" type="localized:java.lang.String">
                     <description>Title of movie</description>
@@ -64,14 +65,33 @@
                 <attribute qualifier="releaseYear" type="java.util.Date">
                     <description>The year that movie released</description>
                     <persistence type="property" />
+                    <modifiers optional="false" initial="true"/>
                 </attribute>
                 <attribute qualifier="age" type="java.lang.Long">
                     <persistence type="dynamic" attributeHandler="MovieAgeAttributeHandler" />
                     <modifiers read="true" write="false" />
                 </attribute>
                 <attribute qualifier="image" type="MediaContainer">
-                    <description>picture of band in different formats</description>
+                    <description>picture of movie in different formats</description>
                     <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype generate="true" code="API" autocreate="true">
+            <deployment table="API" typecode="31370" />
+            <attributes>
+                <attribute qualifier="date" type="java.util.Date">
+                    <description>date of new connection item</description>
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="headline" type="java.lang.String">
+                    <description>short headline for the api item</description>
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="content" type="java.lang.String">
+                    <description>Body of requisition</description>
+                    <persistence type="property" />
                 </attribute>
             </attributes>
         </itemtype>

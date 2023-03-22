@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 21 de mar. de 2023 14:19:33                 ---
+ * --- Generated at 22 de mar. de 2023 10:00:40                 ---
  * ----------------------------------------------------------------
  */
 package moviescore.jalo;
@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import moviescore.constants.MoviescoreConstants;
+import moviescore.jalo.API;
 import moviescore.jalo.Movie;
 import moviescore.jalo.Ticket;
 
@@ -60,6 +61,32 @@ public abstract class GeneratedMoviescoreManager extends Extension
 			ret.putAll(attr);
 		}
 		return ret;
+	}
+	
+	public API createAPI(final SessionContext ctx, final Map attributeValues)
+	{
+		try
+		{
+			ComposedType type = getTenant().getJaloConnection().getTypeManager().getComposedType( MoviescoreConstants.TC.API );
+			return (API)type.newInstance( ctx, attributeValues );
+		}
+		catch( JaloGenericCreationException e)
+		{
+			final Throwable cause = e.getCause();
+			throw (cause instanceof RuntimeException ?
+			(RuntimeException)cause
+			:
+			new JaloSystemException( cause, cause.getMessage(), e.getErrorCode() ) );
+		}
+		catch( JaloBusinessException e )
+		{
+			throw new JaloSystemException( e ,"error creating API : "+e.getMessage(), 0 );
+		}
+	}
+	
+	public API createAPI(final Map attributeValues)
+	{
+		return createAPI( getSession().getSessionContext(), attributeValues );
 	}
 	
 	public Movie createMovie(final SessionContext ctx, final Map attributeValues)

@@ -4,8 +4,10 @@
 <title>Movie Details</title>
 <body>
     <h1>Movie Details</h1>
+    <p><img src="${movie.imageURL}"/></p>
     Movie Details for ${movie.name}
-    <p>${movie.synopsis}</p>
+    <p>Synopsis: ${movie.synopsis}</p>
+    <p>Age: ${movie.age}
     <p>Music type:</p>
     <ul>
         <c:forEach var="types" items="${movie.types}">

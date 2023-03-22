@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 21 de mar. de 2023 14:19:33                 ---
+ * --- Generated at 22 de mar. de 2023 10:00:40                 ---
  * ----------------------------------------------------------------
  */
 package moviescore.jalo;

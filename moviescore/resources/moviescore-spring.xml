@@ -13,6 +13,11 @@
 
 	<context:component-scan base-package="moviescore"/>
 
+	<bean id="NewMovieEventListener" class="moviescore.listener.NewMovieEventListener" parent="abstractEventListener">
+		<property name="modelService" ref="modelService" />
+	</bean>
+
+
 	<bean id="MovieAgeAttributeHandler" class="moviescore.handler.MovieAgeAttributeHandler"/>
 
 	<alias name = "defaultMovieService" alias = "movieService" />
@@ -23,6 +28,7 @@
 	<alias name = "defaultMovieFacade" alias = "movieFacade" />
 	<bean id = "defaultMovieFacade" class ="moviesfacade.facades.impl.DefaultMovieFacade" >
 		<property name = "movieService" ref = "movieService" />
+		<property name="mediaService" ref="mediaService"/>
 	</bean>
 
 	<alias name = "defaultPlaceFacade" alias = "placeFacade" />
