@@ -103,6 +103,13 @@ INSERT_UPDATE ServicelayerJob;code[unique=true];springId[unique=true]
 UPDATE SearchRestriction;code[unique=true];active[default=false]
 ;Frontend_RestrictedCategory
 
+INSERT_UPDATE MovieType; code[unique = true]
+                       ; DRAMA
+                       ; THRILLER
+                       ; ACTION
+                       ; COMEDY
+                       ; ROMCOM
+                       ; ADVENTURE
 
 INSERT_UPDATE Movie; code[unique = true]; name[lang = en]          ; synopsis[lang = en]                    ; synopsis[lang = pt]                      ; releaseYear[dateformat = dd.MM.yyyy HH:mm]; types(code)
                    ; ANG                ; Avengers                 ; Earth mighty super-heroes              ; Homem de ferro e seus amigos             ; 16.01.1998 10:00                          ; ACTION    ;
@@ -114,12 +121,6 @@ INSERT_UPDATE Movie; code[unique = true]; name[lang = en]          ; synopsis[la
                    ; CRD                ; Creed                    ; Boxers and drama                       ; Trocação de soco                         ; 01.02.2015 10:00                          ; DRAMA     ;
                    ; LMR                ; Lost in Mars             ; He got lost in mars!                   ; Ele ficou preso em marte                 ; 01.02.2015 10:00                          ; DRAMA     ;
                    ; BTF                ; Back to the Future       ; Time-travel                            ; Ele vai conhecer seus pais no passado    ; 01.02.1985 10:00                          ; ADVENTURE ;
-                   ; MDT                ; Modern Times             ; Worker making jokes                    ; Chaplin fazendo mais um personagem igual ; 01.02.1936                                ; COMEDY    ;
+                   ; MDT                ; Modern Times             ; Worker making jokes                    ; Chaplin fazendo mais um personagem igual ; 01.02.1936 10:00                          ; COMEDY    ;
 
 
-INSERT_UPDATE MovieType; code[unique = true]
-                       ; DRAMA
-                       ; THRILLER
-                       ; ACTION
-                       ; COMEDY
-                       ; ROMCOM

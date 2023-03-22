@@ -20,7 +20,7 @@
                          
       
 
-      
+        <requires-extension name="moviesfacade"/>
         
         <coremodule generated="true" manager="moviestorefront.jalo.MoviestorefrontManager" packageroot="moviestorefront"/>
                       

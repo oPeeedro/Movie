@@ -30,8 +30,8 @@ public class DefaultMoviePopulator implements Populator<MovieModel, MovieData> {
     @Override
     public void populate(MovieModel source, MovieData target) throws ConversionException {
 
-        final String mediaFormatName = configService.getConfiguration().getString(BAND_LIST_FORMAT);
-        final MediaFormatModel format = mediaService.getFormat(mediaFormatName);
+        //final String mediaFormatName = configService.getConfiguration().getString(BAND_LIST_FORMAT);
+        //final MediaFormatModel format = mediaService.getFormat(mediaFormatName);
 
         target.setCode(source.getCode());
         target.setName(source.getName());
@@ -40,7 +40,7 @@ public class DefaultMoviePopulator implements Populator<MovieModel, MovieData> {
 
 
         target.setTypes(getGenres(source));
-        target.setImageURL(getImageURL(source, format));
+        //target.setImageURL(getImageURL(source, format));
     }
 
     protected String getImageURL(final MovieModel sm, final MediaFormatModel format) {

@@ -42,7 +42,7 @@ public class DefaultMovieService implements MovieService {
         final List<MovieModel> result = movieDAO.findMoviesByName(name);
         if (result.isEmpty())
         {
-            throw new UnknownIdentifierException("Movie with year '" + name + "' not found!");
+            throw new UnknownIdentifierException("Movie with name '" + name + "' not found!");
         }
         else if (result.size() > 1)
         {

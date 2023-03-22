@@ -13,6 +13,8 @@
 
 	<context:component-scan base-package="moviescore"/>
 
+	<bean id="MovieAgeAttributeHandler" class="moviescore.handler.MovieAgeAttributeHandler"/>
+
 	<alias name = "defaultMovieService" alias = "movieService" />
 	<bean id = "defaultMovieService" class = "moviescore.service.impl.DefaultMovieService" >
 		<property name = "movieDAO" ref = "movieDAO" />

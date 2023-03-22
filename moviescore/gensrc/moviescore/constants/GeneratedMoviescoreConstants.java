@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 21 de mar. de 2023 10:58:49                 ---
+ * --- Generated at 21 de mar. de 2023 14:19:33                 ---
  * ----------------------------------------------------------------
  */
 package moviescore.constants;

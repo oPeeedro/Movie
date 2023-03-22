@@ -65,7 +65,7 @@
                     <description>The year that movie released</description>
                     <persistence type="property" />
                 </attribute>
-                <attribute qualifier="age" type="java.lang.Integer">
+                <attribute qualifier="age" type="java.lang.Long">
                     <persistence type="dynamic" attributeHandler="MovieAgeAttributeHandler" />
                     <modifiers read="true" write="false" />
                 </attribute>
