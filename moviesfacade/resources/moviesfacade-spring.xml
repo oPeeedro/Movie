@@ -29,4 +29,17 @@
 		<property name ="configurationService" ref="configurationService"/>
 	</bean>
 
+	<alias name = "defaultMovieFacade" alias = "movieFacade" />
+	<bean id = "defaultMovieFacade" class ="moviesfacade.facades.impl.DefaultMovieFacade" >
+		<property name = "movieService" ref = "movieService" />
+		<!--		<property name="mediaService" ref="mediaService"/>-->
+	</bean>
+
+	<alias name = "defaultPlaceFacade" alias = "placeFacade" />
+	<bean id = "defaultPlaceFacade" class ="moviesfacade.facades.impl.DefaultPlaceFacade" >
+		<property name = "productService" ref = "productService" />
+	</bean>
+
 </beans>
+
+

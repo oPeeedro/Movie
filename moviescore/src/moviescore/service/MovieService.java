@@ -1,9 +1,11 @@
 package moviescore.service;
 
+import de.hybris.platform.core.model.media.MediaModel;
 import de.hybris.platform.servicelayer.exceptions.AmbiguousIdentifierException;
 import de.hybris.platform.servicelayer.exceptions.UnknownIdentifierException;
 import moviescore.model.MovieModel;
 
+import java.util.Collection;
 import java.util.List;
 
 public interface MovieService {
@@ -25,4 +27,7 @@ public interface MovieService {
 
     MovieModel getMovieByName(String name);
 //    MovieModel getMoviesByYear(String year) throws AmbiguousIdentifierException, UnknownIdentifierException;
+
+
+    Collection<MediaModel> getMovieImage(final String name);
 }

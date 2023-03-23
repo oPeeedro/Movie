@@ -71,7 +71,7 @@
                     <persistence type="dynamic" attributeHandler="MovieAgeAttributeHandler" />
                     <modifiers read="true" write="false" />
                 </attribute>
-                <attribute qualifier="image" type="MediaContainer">
+                <attribute qualifier="imageURL" type="MediaContainer">
                     <description>picture of movie in different formats</description>
                     <persistence type="property"/>
                 </attribute>

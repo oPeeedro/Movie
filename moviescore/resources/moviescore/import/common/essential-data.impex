@@ -1,61 +1,20 @@
-# -----------------------------------------------------------------------
-# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
-# -----------------------------------------------------------------------
-# Import essential data for the Accelerator
-#
-# Includes:
-# * Languages
-# * Currencies
-# * Titles
-# * Vendors
-# * Warehouses
-# * Supported Credit/Debit cards
-# * User Groups
-# * DistanceUnits for Storelocator
-# * MediaFolders
-# * MediaFormats                               s
-# * Tax & Tax Groups
-# * Jobs
-#% impex.setLocale(Locale.GERMAN);
+UPDATE GenericItem[processor = de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor]; pk[unique = true]
 
-$siteResource=jar:.constants.MoviescoreConstants&/moviescore/movieimages
-
-# Languages
-INSERT_UPDATE Language;isocode[unique=true];fallbackLanguages(isocode);active[default=true]
-;en;;;
-;de;en;;
-;ja;en;;
-;zh;en;;
-
-# Currencies
-INSERT_UPDATE Currency;isocode[unique=true];conversion;digits;symbol
-;GBP;1;2;£
-;EUR;1;2;€
-;USD;1,4;2;$
-;JPY;120;0;¥
-
-# Vendor
-INSERT_UPDATE Vendor;code[unique=true];name
-;default;Default Vendor
-
-# Disable preview for email pages
-UPDATE CMSPageType;code[unique=true];previewDisabled
-;EmailPage;true
-
-# Titles
-INSERT_UPDATE Title;code[unique=true]
-;mr
-;mrs
-;miss
-;ms
-;dr
-;rev
+$productCatalog=moviesProductCatalog
+$supercategories=supercategories(code, $catalogVersion)
+$baseProduct=baseProduct(code,$catalogVersion)
+$approved=approvalstatus(code)[default='approved']
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Online'])[unique=true,default=$productCatalog:Online]
+$medias=medias(code, $catalogVersion)
+$siteResource=file:/home/pedrlrsilva/app/CX/hybris/bin/custom/moviescore/resources/media
+$solrIndexedType=moviesProductType
 
 # Media Folders
 INSERT_UPDATE MediaFolder;qualifier[unique=true];path[unique=true]
 ;images;images
 ;email-body;email-body
 ;email-attachments;email-attachments
+;medias;media
 
 # Media formats
 INSERT_UPDATE MediaFormat;qualifier[unique=true]
@@ -71,64 +30,45 @@ INSERT_UPDATE MediaFormat;qualifier[unique=true]
 ;desktop
 ;widescreen
 
-# Tax & Tax Groups
-INSERT_UPDATE UserTaxGroup;code[unique=true]
-;de-taxes
-;jp-taxes
-;uk-taxes
-;us-taxes
-;ca-taxes
+INSERT_UPDATE MediaFormat; qualifier[unique = true]; name
+                         ; movieMediaFormat        ; Movie Format
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Online'])[unique=true,default=$productCatalog:Online]
 
-INSERT_UPDATE ProductTaxGroup;code[unique=true]
-;jp-vat-full
-;eu-vat-full
-;eu-vat-half
-;us-sales-tax-full
-;ca-sales-tax-full
-
-INSERT_UPDATE Tax;code[unique=true];value;currency(isocode)
-;de-vat-full;19
-;de-vat-half;7
-;jp-vat-full;5
-;uk-vat-full;20
-;uk-vat-half;5
-;us-sales-tax-full;0
-;ca-sales-tax-full;0
-
-INSERT_UPDATE ServicelayerJob;code[unique=true];springId[unique=true]
-;cartRemovalJob;cartRemovalJob
-;siteMapMediaJob;siteMapMediaJob
-;quoteToExpireSoonJobPerformable;quoteToExpireSoonJobPerformable
-;quoteExpiredJobPerformable;quoteExpiredJobPerformable
-
-# Deactivate Frontend Restriction on category by default for perfomance purposes
-UPDATE SearchRestriction;code[unique=true];active[default=false]
-;Frontend_RestrictedCategory
+INSERT_UPDATE MediaContainer; qualifier[unique = true]; $medias; $catalogVersion
+                            ; avengersContainer ; avengers.jpeg
+                            ; bladeContainer    ; blade.jpg
+                            ; 007Container      ; skyfall.jpg
+                            ; lostContainer     ; lost.jpg
+                            ; hitchContainer    ; hitch.jpeg
+                            ; tintinContainer   ; tintin.jpeg
+                            ; modernContainer   ; modern.jpg
+                            ; backContainer     ; btf.jpg
+                            ; harryContainer    ; harry.jpeg
+                            ; creedContainer    ; creed.jpg
 
 
-INSERT_UPDATE Media; mediaFormat(qualifier); code[unique = true]; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]; mime[default = 'image/jpeg']; $catalogVersion
-                   ; MovieList              ; rockSmall.jpg      ; $siteResource/rockSmall.jpg                                                 ;                             ;
-                   ; MovieDetail            ; rockBig.jpg        ; $siteResource/rockBig.jpg                                                   ;                             ;
-                   ; MovieList              ; danceSmall.jpg     ; $siteResource/danceSmall.jpg                                                ;                             ;
-                   ; MovieDetail            ; danceBig.jpg       ; $siteResource/danceBig.jpg                                                  ;                             ;
-                   ; MovieList              ; jazzSmall.jpg      ; $siteResource/jazzSmall.jpg                                                 ;                             ;
-                   ; MovieDetail            ; jazzBig.jpg        ; $siteResource/jazzBig.jpg                                                   ;                             ;
-                   ; MovieList              ; bigbandSmall.jpg   ; $siteResource/bigbandSmall.jpg                                              ;                             ;
-                   ; MovieDetail            ; bigbandBig.jpg     ; $siteResource/bigbandBig.jpg                                                ;                             ;
-                   ; MovieList              ; omphaSmall.jpg     ; $siteResource/omphaSmall.jpg                                                ;                             ;
-                   ; MovieDetail            ; omphaBig.jpg       ; $siteResource/omphaBig.jpg                                                  ;                             ;
-                   ; MovieList              ; orchestraSmall.jpg ; $siteResource/orchestraSmall.jpg                                            ;                             ;
-                   ; MovieDetail            ; orchestraBig.jpg   ; $siteResource/orchestraBig.jpg                                              ;                             ;
+INSERT_UPDATE Media; mediaFormat(qualifier); code[unique = true]; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]; mime; $catalogVersion
+; movieMediaFormat ; avengers.jpeg ; $siteResource/avengers.jpeg ; ;
+; movieMediaFormat ; blade.jpg     ; $siteResource/blade.jpg     ; ;
+; movieMediaFormat ; skyfall.jpg   ; $siteResource/skyfall.jpg   ; ;
+; movieMediaFormat ; lost.jpg      ; $siteResource/lost.jpg      ; ;
+; movieMediaFormat ; hitch.jpeg    ; $siteResource/hitch.jpeg    ; ;
+; movieMediaFormat ; tintin.jpeg   ; $siteResource/tintin.jpeg   ; ;
+; movieMediaFormat ; modern.jpg    ; $siteResource/modern.jpg    ; ;
+; movieMediaFormat ; btf.jpg       ; $siteResource/btf.jpg       ; ;
+; movieMediaFormat ; harry.jpeg     ; $siteResource/harry.jpeg     ; ;
+; movieMediaFormat ; creed.jpg     ; $siteResource/creed.jpg     ; ;
 
 
-INSERT_UPDATE MediaContainer; qualifier[unique = true]; $medias                             ; $catalogVersion
-                            ; yRockImage              ; rockSmall.jpg,rockBig.jpg           ;
-                            ; yBandImage              ; danceSmall.jpg,danceBig.jpg         ;
-                            ; yJazzImage              ; jazzSmall.jpg,jazzBig.jpg           ;
-                            ; BannedImage             ; bigbandSmall.jpg,bigbandBig.jpg     ;
-                            ; SirkenImage             ; omphaSmall.jpg,omphaBig.jpg         ;
-                            ; TheChoirImage           ; orchestraSmall.jpg,orchestraBig.jpg ;
 
+
+INSERT_UPDATE MovieType; code[unique = true]
+                       ; DRAMA
+                       ; THRILLER
+                       ; ACTION
+                       ; COMEDY
+                       ; ROMCOM
+                       ; ADVENTURE
 
 INSERT_UPDATE Movie; code[unique = true]; name[lang = en]          ; synopsis[lang = en]                    ; synopsis[lang = pt]                      ; releaseYear[dateformat = dd.MM.yyyy HH:mm]; types(code)
                    ; ANG                ; Avengers                 ; Earth mighty super-heroes              ; Homem de ferro e seus amigos             ; 16.01.2012 10:00                          ; ACTION    ;
@@ -138,18 +78,21 @@ INSERT_UPDATE Movie; code[unique = true]; name[lang = en]          ; synopsis[la
                    ; TIN                ; The Adventures of Tintin ; Everybody wants the treasure           ; Tesouros e areia                         ; 01.02.2011 10:00                          ; ADVENTURE ;
                    ; HP1                ; Harry Potter             ; Hogwarts                               ; Leviosa                                  ; 01.02.2001 10:00                          ; ADVENTURE ;
                    ; CRD                ; Creed                    ; Boxers and drama                       ; Trocação de soco                         ; 01.02.2015 10:00                          ; DRAMA     ;
-                   ; LMR                ; Lost in Mars             ; He got lost in mars!                   ; Ele ficou preso em marte                 ; 01.02.2015 10:00                          ; DRAMA     ;
+                   ; LMR                ; Martian                  ; He got lost in mars!                   ; Ele ficou preso em marte                 ; 01.02.2015 10:00                          ; DRAMA     ;
                    ; BTF                ; Back to the Future       ; Time-travel                            ; Ele vai conhecer seus pais no passado    ; 01.02.1985 10:00                          ; ADVENTURE ;
                    ; MDT                ; Modern Times             ; Worker making jokes                    ; Chaplin fazendo mais um personagem igual ; 01.02.1936 10:00                               ; COMEDY    ;
 
-
-INSERT_UPDATE MovieType; code[unique = true]
-                       ; DRAMA
-                       ; THRILLER
-                       ; ACTION
-                       ; COMEDY
-                       ; ROMCOM
-
+INSERT_UPDATE Movie; code[unique = true]; imageURL(qualifier)
+                   ; ANG                ; avengersContainer
+                   ; BLD                ; bladeContainer
+                   ; 007SKY             ; 007Container
+                   ; LMR                ; lostContainer
+                   ; HIT                ; hitchContainer
+                   ; TIN                ; tintinContainer
+                   ; MDT                ; modernContainer
+                   ; BTF                ; backContainer
+                   ; HP1                ; harryContainer
+                   ; CRD                ; creedContainer
 
 #INSERT_UPDATE Movie; code[unique = true]; name[lang = en]; synopsis[lang = en]; synopsis[lang = pt]; releaseYear[dateformat = dd.MM.yyyy HH:mm]; types(code)
 #                   ; SPL                ; Silent Place   ; SHhhhh             ; SIlêncio!!!!!!!    ; 16.01.2020 10:00                          ; THRILLER ;

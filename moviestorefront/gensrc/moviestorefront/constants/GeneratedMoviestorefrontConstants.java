@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 22 de mar. de 2023 10:00:40                 ---
+ * --- Generated at 22 de mar. de 2023 11:54:52                 ---
  * ----------------------------------------------------------------
  */
 package moviestorefront.constants;

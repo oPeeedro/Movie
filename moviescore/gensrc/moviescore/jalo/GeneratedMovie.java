@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 22 de mar. de 2023 10:00:40                 ---
+ * --- Generated at 23 de mar. de 2023 10:10:36                 ---
  * ----------------------------------------------------------------
  */
 package moviescore.jalo;
@@ -45,8 +45,8 @@ public abstract class GeneratedMovie extends GenericItem
 	public static final String SYNOPSIS = "synopsis";
 	/** Qualifier of the <code>Movie.releaseYear</code> attribute **/
 	public static final String RELEASEYEAR = "releaseYear";
-	/** Qualifier of the <code>Movie.image</code> attribute **/
-	public static final String IMAGE = "image";
+	/** Qualifier of the <code>Movie.imageURL</code> attribute **/
+	public static final String IMAGEURL = "imageURL";
 	/** Qualifier of the <code>Movie.tickets</code> attribute **/
 	public static final String TICKETS = "tickets";
 	/** Qualifier of the <code>Movie.types</code> attribute **/
@@ -76,7 +76,7 @@ public abstract class GeneratedMovie extends GenericItem
 		tmp.put(NAME, AttributeMode.INITIAL);
 		tmp.put(SYNOPSIS, AttributeMode.INITIAL);
 		tmp.put(RELEASEYEAR, AttributeMode.INITIAL);
-		tmp.put(IMAGE, AttributeMode.INITIAL);
+		tmp.put(IMAGEURL, AttributeMode.INITIAL);
 		DEFAULT_INITIAL_ATTRIBUTES = Collections.unmodifiableMap(tmp);
 	}
 	@Override
@@ -122,39 +122,39 @@ public abstract class GeneratedMovie extends GenericItem
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>Movie.image</code> attribute.
-	 * @return the image - picture of band in different formats
+	 * <i>Generated method</i> - Getter of the <code>Movie.imageURL</code> attribute.
+	 * @return the imageURL - picture of movie in different formats
 	 */
-	public MediaContainer getImage(final SessionContext ctx)
+	public MediaContainer getImageURL(final SessionContext ctx)
 	{
-		return (MediaContainer)getProperty( ctx, IMAGE);
+		return (MediaContainer)getProperty( ctx, IMAGEURL);
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>Movie.image</code> attribute.
-	 * @return the image - picture of band in different formats
+	 * <i>Generated method</i> - Getter of the <code>Movie.imageURL</code> attribute.
+	 * @return the imageURL - picture of movie in different formats
 	 */
-	public MediaContainer getImage()
+	public MediaContainer getImageURL()
 	{
-		return getImage( getSession().getSessionContext() );
+		return getImageURL( getSession().getSessionContext() );
 	}
 	
 	/**
-	 * <i>Generated method</i> - Setter of the <code>Movie.image</code> attribute. 
-	 * @param value the image - picture of band in different formats
+	 * <i>Generated method</i> - Setter of the <code>Movie.imageURL</code> attribute. 
+	 * @param value the imageURL - picture of movie in different formats
 	 */
-	public void setImage(final SessionContext ctx, final MediaContainer value)
+	public void setImageURL(final SessionContext ctx, final MediaContainer value)
 	{
-		setProperty(ctx, IMAGE,value);
+		setProperty(ctx, IMAGEURL,value);
 	}
 	
 	/**
-	 * <i>Generated method</i> - Setter of the <code>Movie.image</code> attribute. 
-	 * @param value the image - picture of band in different formats
+	 * <i>Generated method</i> - Setter of the <code>Movie.imageURL</code> attribute. 
+	 * @param value the imageURL - picture of movie in different formats
 	 */
-	public void setImage(final MediaContainer value)
+	public void setImageURL(final MediaContainer value)
 	{
-		setImage( getSession().getSessionContext(), value );
+		setImageURL( getSession().getSessionContext(), value );
 	}
 	
 	/**

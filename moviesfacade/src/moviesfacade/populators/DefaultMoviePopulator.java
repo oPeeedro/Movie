@@ -49,7 +49,7 @@ public class DefaultMoviePopulator implements Populator<MovieModel, MovieData> {
     }
 
     protected String getImageURL(final MovieModel sm, final MediaFormatModel format) {
-        final MediaContainerModel container = sm.getImage();
+        final MediaContainerModel container = sm.getImageURL();
         if (container != null) {
             return mediaService.getMediaByFormat(container, format).getDownloadURL();
         }

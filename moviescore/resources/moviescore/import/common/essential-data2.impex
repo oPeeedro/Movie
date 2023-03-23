@@ -1,0 +1,57 @@
+UPDATE GenericItem[processor = de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor]; pk[unique = true]
+
+$productCatalog=moviesProductCatalog
+$supercategories=supercategories(code, $catalogVersion)
+$baseProduct=baseProduct(code,$catalogVersion)
+$approved=approvalstatus(code)[default='approved']
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Online'])[unique=true,default=$productCatalog:Online]
+$medias=medias(code, $catalogVersion)
+$siteResource=file:/HYBRIS123/CXCOMCL221100P_1-70007431_po/hybris/bin/custom/moviescore/resources/moviescore/medias
+$solrIndexedType=moviesProductType
+
+INSERT_UPDATE MovieType; code[unique = true]
+                       ; ACTION
+                       ; ROMANTIC
+                       ; ADVENTURE
+
+INSERT_UPDATE Movie; code[unique = true]; name[lang = en]    ; synopsis[lang = en]                                   ; synopsis[lang = pt]                  ; releaseYear[dateformat = dd.MM.yyyy HH:mm]; types(code)
+                   ; TIT                ; Titanic            ; A Boat sinks                                          ; Um barco afunda                      ; 16.01.1998 10:00                          ; ROMANTIC  ;
+                   ; BLD                ; Blade              ; A vanpire man fights other vanpire man                ; Luta contra os vampiros              ; 01.02.2002 10:00                          ; ACTION    ;
+                   ; 007CASS            ; 007 Cassino Royale ; He likes to play poker and Le Chifre is up to no good ; Ele gosta de jogar poker             ; 01.02.2002 10:00                          ; ACTION    ;
+                   ; 007GOLD            ; 007 Gold Finger    ; 007 Fights Midas                                      ; Tudo que ele toca vira ouro          ; 01.02.1965 10:00                          ; ACTION    ;
+                   ; AVAT               ; Avatar             ; Everybody are blue and live far                       ; Todo mundo é azul e eles vivem longe ; 01.02.2009 10:00                          ; ADVENTURE ;
+                   ; WIND               ; Wind took away     ; Everybody are dead already!!!                         ; Velho de mais para se preocupar      ; 01.02.1939 10:00                          ; ROMANTIC  ;
+                   ; GONE60             ; Gone in 60 seconds ; They like to steal cars                               ; Grupo que gosta de rubar carros      ; 01.02.2000 10:00                          ; ACTION    ;
+
+
+
+
+INSERT_UPDATE MediaFormat; qualifier[unique = true]; name
+                         ; movieMediaFormat        ; Movie Format
+
+INSERT_UPDATE Media; mediaFormat(qualifier); code[unique = true]; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]; mime[default = 'image/jpeg']; $catalogVersion
+                   ; movieMediaFormat      ; titanic.jpeg       ; $siteResource/titanic.jpeg                                                  ;                             ;
+                   ; movieMediaFormat      ; 007cas.jpeg        ; $siteResource/007cas.jpeg                                                   ;                             ;
+                   ; movieMediaFormat      ; 007gold.jpeg       ; $siteResource/007gold.jpeg                                                  ;                             ;
+                   ; movieMediaFormat      ; avatar.jpeg        ; $siteResource/avatar.jpeg                                                   ;                             ;
+                   ; movieMediaFormat      ; blade.jpeg         ; $siteResource/blade.jpeg                                                    ;                             ;
+                   ; movieMediaFormat      ; gone60.jpeg        ; $siteResource/gone60.jpeg                                                   ;                             ;
+                   ; movieMediaFormat      ; wind.jpeg          ; $siteResource/wind.jpeg                                                     ;                             ;
+
+INSERT_UPDATE MediaContainer; qualifier[unique = true]; $medias; $catalogVersion
+                            ; titanicContainer        ; titanic.jpeg
+                            ; bladeContainer          ; blade.jpeg
+                            ; 007casinoContainer      ; 007cas.jpeg
+                            ; 007goldContainer        ; 007gold.jpeg
+                            ; avatarContainer         ; avatar.jpeg
+                            ; gone60Container         ; gone60.jpeg
+                            ; windContainer           ; wind.jpeg
+
+INSERT_UPDATE Movie; code[unique = true]; imageURL(qualifier)
+                   ; TIT                ; titanicContainer
+                   ; BLD                ; bladeContainer
+                   ; 007CASS            ; 007casinoContainer
+                   ; 007GOLD            ; 007goldContainer
+                   ; AVAT               ; avatarContainer
+                   ; WIND               ; gone60Container
+                   ; GONE60             ; windContainer

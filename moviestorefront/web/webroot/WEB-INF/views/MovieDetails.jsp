@@ -4,11 +4,11 @@
 <title>Movie Details</title>
 <body>
     <h1>Movie Details</h1>
-    <p><img src="${movie.imageURL}"/></p>
+    <p><img src=${movie.imageURL}/></p>
     Movie Details for ${movie.name}
     <p>Synopsis: ${movie.synopsis}</p>
     <p>Age: ${movie.age}
-    <p>Music type:</p>
+    <p>Movie type:</p>
     <ul>
         <c:forEach var="types" items="${movie.types}">
             <li>${types}</li>
@@ -17,7 +17,8 @@
     <p>Ticket History:</p>
     <ul>
         <c:forEach var="ticket" items="${movie.place}">
-            <li><a href="../ticket/{ticketId}">${ticket.id}</a>(Ticket: ${ticket.description})</li>
+            <li>${ticket.name}
+            <a href="../ticket/{ticketId}">${ticket.id}</a>(Ticket: ${ticket.description})</li>
         </c:forEach>
     </ul>
     <a href="../movies">Back to Movie List</a>

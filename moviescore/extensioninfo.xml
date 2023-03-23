@@ -9,8 +9,9 @@
         
         <!-- you should add all required extensions to this list, except platform 
 			extensions which are automatically required -->
-                		
-        
+
+
+
         <requires-extension name="acceleratorcms"/>
 
         <coremodule generated="true" manager="moviescore.jalo.MoviescoreManager" packageroot="moviescore"/>

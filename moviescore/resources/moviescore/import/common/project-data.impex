@@ -10,7 +10,7 @@ $baseProduct = baseProduct(code, $catalogVersion)
 $approved = approvalstatus(code)[default='approved']
 $catalogVersion = catalogversion(catalog(id[default=$productCatalog]), version[default='Online'])[unique=true, default=$productCatalog:Online]
 $medias=medias(code, $catalogVersion)
-$siteResource=jar:.constants.MoviescoreConstants&/moviescore/movieimages
+$siteResource=file:/app/CX/hybris/bin/custom/moviescore/resources/media
 
 # Product catalog
 INSERT_UPDATE Catalog; id[unique = true]
@@ -26,9 +26,9 @@ INSERT_UPDATE Product; code[unique = true]; name                    ; movie(code
 
 # Insert Products
 INSERT_UPDATE Ticket; code[unique = true]; name                 ; date[dateformat = dd.MM.yyyy]; venue                     ; ticketType(code); baseProduct(code); $catalogVersion; $approved
-                    ; 20170101           ; Ticket - Cinemark    ; 03.02.2017                   ; "hybris Munich, Germany"  ; openair         ; 201701           ;
-                    ; 20170102           ; Ticket - UCI         ; 21.03.2017                   ; "hybris London, UK"       ; openair         ; 201701           ;
-                    ; 20170103           ; Ticket - Cineplus    ; 15.06.2017                   ; "hybris Montreal, Canada" ; indoor          ; 201701           ;
-                    ; 20170104           ; Ticket - Cinepolis   ; 04.11.2017                   ; "hybris Gliwice, Poland"  ; indoor          ; 201701           ;
-                    ; 20170105           ; Ticket - CinePasseio ; 07.01.2018                   ; "hybris Boulder, USA"     ; indoor          ; 201701           ;
+                    ; 20170101           ; Ticket - Cinemark    ; 03.02.2017                   ; "hybris Munich, Germany"  ;                 ; 201701           ;
+                    ; 20170102           ; Ticket - UCI         ; 21.03.2017                   ; "hybris London, UK"       ;                 ; 201701           ;
+                    ; 20170103           ; Ticket - Cineplus    ; 15.06.2017                   ; "hybris Montreal, Canada" ;                 ; 201701           ;
+                    ; 20170104           ; Ticket - Cinepolis   ; 04.11.2017                   ; "hybris Gliwice, Poland"  ;                 ; 201701           ;
+                    ; 20170105           ; Ticket - CinePasseio ; 07.01.2018                   ; "hybris Boulder, USA"     ;                 ; 201701           ;
                     ; 20170106           ; Ticket - Torrent     ; 08.09.2018                   ; "hybris Boston, USA"      ;                 ; 201701           ;

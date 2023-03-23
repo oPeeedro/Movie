@@ -25,7 +25,7 @@
 		<property name=  "age" type="java.lang.Long"/>
 		<property name = "types" type="java.util.List&lt;String&gt;"/>
 		<property name = "place" type="java.util.List&lt;moviesfacade.data.ExhibitionSummaryData&gt;"/>
-		<property name = "ImageURL" type = "String" />
+		<property name = "imageURL" type = "String" />
 	</bean>
 	<bean class = "moviesfacade.data.TicketSummaryData">
 		<description >Data object for a ticket summary</description>

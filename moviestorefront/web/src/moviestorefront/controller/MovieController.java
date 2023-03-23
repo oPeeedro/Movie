@@ -27,7 +27,7 @@ public class MovieController{
         return "MovieList";
     }
     @RequestMapping(value = "/movies/{movieName}")
-    public String showBandDetails(@PathVariable final String movieName, final Model model) throws UnsupportedEncodingException
+    public String showMovieDetails(@PathVariable final String movieName, final Model model) throws UnsupportedEncodingException
     {
         catalogVersionService.setSessionCatalogVersion(CATALOG_ID, CATALOG_VERSION_NAME);
         final String decodedBandId = URLDecoder.decode(movieName, "UTF-8");
