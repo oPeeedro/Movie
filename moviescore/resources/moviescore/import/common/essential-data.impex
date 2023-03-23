@@ -6,7 +6,7 @@ $baseProduct=baseProduct(code,$catalogVersion)
 $approved=approvalstatus(code)[default='approved']
 $catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Online'])[unique=true,default=$productCatalog:Online]
 $medias=medias(code, $catalogVersion)
-$siteResource=file:/home/pedrlrsilva/app/CX/hybris/bin/custom/moviescore/resources/media
+$siteResource=file:../app/CX/hybris/bin/custom/moviescore/resources/media
 $solrIndexedType=moviesProductType
 
 # Media Folders
@@ -93,6 +93,15 @@ INSERT_UPDATE Movie; code[unique = true]; imageURL(qualifier)
                    ; BTF                ; backContainer
                    ; HP1                ; harryContainer
                    ; CRD                ; creedContainer
+
+# Define the cron job and the job that it wraps
+INSERT_UPDATE CronJob; code[unique = true]    ; job(code)          ; singleExecutable; sessionLanguage(isocode)
+                     ; RemoveOldMoviesCronJob ; RemoveOldMoviesJob ; false           ; en
+
+# Define the trigger that periodically invokes the cron job
+INSERT_UPDATE Trigger; cronjob(code)[unique = true]; cronExpression
+#% afterEach: impex.getLastImportedItem().setActivationTime(new Date());
+                     ; RemoveOldMoviesCronJob             ; 1 0 * * *
 
 #INSERT_UPDATE Movie; code[unique = true]; name[lang = en]; synopsis[lang = en]; synopsis[lang = pt]; releaseYear[dateformat = dd.MM.yyyy HH:mm]; types(code)
 #                   ; SPL                ; Silent Place   ; SHhhhh             ; SIlêncio!!!!!!!    ; 16.01.2020 10:00                          ; THRILLER ;

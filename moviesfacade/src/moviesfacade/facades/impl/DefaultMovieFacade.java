@@ -2,7 +2,6 @@ package moviesfacade.facades.impl;
 
 import de.hybris.platform.core.model.media.MediaModel;
 import de.hybris.platform.servicelayer.dto.converter.Converter;
-import de.hybris.platform.servicelayer.media.MediaService;
 import moviescore.model.MovieModel;
 import moviescore.service.MovieService;
 import moviesfacade.data.MovieData;
@@ -40,18 +39,18 @@ public class DefaultMovieFacade implements MovieFacade
         }
        return movieConverter.convert(movie);
     }
-    public MovieData getMovieByYear(final String year)
+    public List<MovieData> getMovieByYear(final String year)
     {
         if (year == null)
         {
             throw new IllegalArgumentException("Movie year cannot be null");
         }
-        final MovieModel movie = movieService.getMoviesByYear(year);
+        final List<MovieModel> movie = movieService.getMoviesByYear(year);
         if (movie == null)
         {
             return null;
         }
-        return movieConverter.convert(movie);
+        return movieConverter.convertAll(movie);
     }
     public Collection<MediaModel> getMovieImage(final String name)
     {

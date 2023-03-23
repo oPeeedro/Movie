@@ -11,5 +11,9 @@ public interface MovieDAO {
     List<MovieModel> findMoviesByYear(String year);
     List<MovieModel> findMoviesByName(String name);
 
+    List<MovieModel> findMoviesUntilYear(String year);
+
     Collection<MediaModel> findMediaByMovieName(String name);
+
+    List<MovieModel> findMovieByYear(String year);
 }

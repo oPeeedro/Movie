@@ -10,7 +10,7 @@ public interface MovieFacade
     MovieData getMovie(String name);
     List<MovieData> getMovies();
 
-    MovieData getMovieByYear(String year);
+    List<MovieData> getMovieByYear(String year);
 
     Collection<MediaModel> getMovieImage(String name);
 }

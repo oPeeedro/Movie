@@ -26,9 +26,19 @@ public class DefaultMovieService implements MovieService {
      * uniqueness of result.
      */
     @Override
-    public MovieModel getMoviesByYear(final String year) throws AmbiguousIdentifierException, UnknownIdentifierException
+    public List<MovieModel> getMoviesByYear(final String year) throws AmbiguousIdentifierException, UnknownIdentifierException
     {
         final List<MovieModel> result = movieDAO.findMoviesByYear(year);
+        if (result.isEmpty())
+        {
+            throw new UnknownIdentifierException("Movie with year '" + year + "' not found!");
+        }
+        return result;
+    }
+
+    @Override
+    public MovieModel getMovieByYear(String year) throws AmbiguousIdentifierException, UnknownIdentifierException {
+        final List<MovieModel> result = movieDAO.findMovieByYear(year);
         if (result.isEmpty())
         {
             throw new UnknownIdentifierException("Movie with year '" + year + "' not found!");
@@ -38,6 +48,17 @@ public class DefaultMovieService implements MovieService {
             throw new AmbiguousIdentifierException("Movie year '" + year + "' is not unique, " + result.size() + " movies found!");
         }
         return result.get(0);
+    }
+
+    @Override
+    public List<MovieModel> getMoviesUntilYear(final String year) throws AmbiguousIdentifierException, UnknownIdentifierException
+    {
+        final List<MovieModel> result = movieDAO.findMoviesUntilYear(year);
+        if (result.isEmpty())
+        {
+            throw new UnknownIdentifierException("Movie with year '" + year + "' not found!");
+        }
+        return result;
     }
     @Override
     public  MovieModel getMovieByName(final String name) throws AmbiguousIdentifierException, UnknownIdentifierException{
